@@ -50,7 +50,9 @@ class _CreditCardFormState extends State<CreditCardForm> {
   final TextEditingController _cvvCodeController =
       MaskedTextController(mask: '0000');
 
+  FocusNode dateExpiredFocusNode = FocusNode();
   FocusNode cvvFocusNode = FocusNode();
+  FocusNode cardHolderNameFocusNode = FocusNode();
 
   void textFieldFocusDidChange() {
     creditCardModel.isCvvFocused = cvvFocusNode.hasFocus;
@@ -142,6 +144,9 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
+                onFieldSubmitted: (value){
+                  FocusScope.of(context).requestFocus(dateExpiredFocusNode);
+                },
               ),
             ),
             Container(
@@ -150,6 +155,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
               child: TextFormField(
                 controller: _expiryDateController,
                 cursorColor: widget.cursorColor ?? themeColor,
+                focusNode: dateExpiredFocusNode,
                 style: TextStyle(
                   color: widget.textColor,
                 ),
@@ -159,12 +165,15 @@ class _CreditCardFormState extends State<CreditCardForm> {
                     hintText: 'MM/YY'),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
+                onFieldSubmitted: (value){
+                  FocusScope.of(context).requestFocus(cvvFocusNode);
+                },
               ),
             ),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-              child: TextField(
+              child: TextFormField(
                 focusNode: cvvFocusNode,
                 controller: _cvvCodeController,
                 cursorColor: widget.cursorColor ?? themeColor,
@@ -178,6 +187,9 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.done,
+                onFieldSubmitted: (value){
+                  FocusScope.of(context).requestFocus(cardHolderNameFocusNode);
+                },
                 onChanged: (String text) {
                   setState(() {
                     cvvCode = text;
@@ -191,6 +203,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
               child: TextFormField(
                 controller: _cardHolderNameController,
                 cursorColor: widget.cursorColor ?? themeColor,
+                focusNode: cardHolderNameFocusNode,
                 style: TextStyle(
                   color: widget.textColor,
                 ),
@@ -200,6 +213,9 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
+                onFieldSubmitted: (value){
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
               ),
             ),
           ],
