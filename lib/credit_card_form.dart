@@ -138,13 +138,17 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   color: widget.textColor,
                 ),
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
                   labelText: 'Número do Cartão',
                   hintText: 'xxxx xxxx xxxx xxxx',
                 ),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
-                onFieldSubmitted: (value){
+                onFieldSubmitted: (value) {
                   FocusScope.of(context).requestFocus(dateExpiredFocusNode);
                 },
               ),
@@ -160,12 +164,16 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   color: widget.textColor,
                 ),
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
                     labelText: 'Data de Validade',
                     hintText: 'MM/YY'),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
-                onFieldSubmitted: (value){
+                onFieldSubmitted: (value) {
                   FocusScope.of(context).requestFocus(cvvFocusNode);
                 },
               ),
@@ -181,13 +189,17 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   color: widget.textColor,
                 ),
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
                   labelText: 'CVV',
                   hintText: 'XXXX',
                 ),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.done,
-                onFieldSubmitted: (value){
+                onFieldSubmitted: (value) {
                   FocusScope.of(context).requestFocus(cardHolderNameFocusNode);
                 },
                 onChanged: (String text) {
@@ -208,12 +220,16 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   color: widget.textColor,
                 ),
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
                   labelText: 'Nome do Titular',
                 ),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
-                onFieldSubmitted: (value){
+                onFieldSubmitted: (value) {
                   FocusScope.of(context).requestFocus(FocusNode());
                 },
               ),
